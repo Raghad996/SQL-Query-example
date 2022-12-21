@@ -1,0 +1,13 @@
+ - What is the rentals total numbers of the music films ? 
+SELECT f.film_id AS "Film_id", c.name AS "Category_name", COUNT(r.rental_id) AS "number_of_rentals"
+FROM film_category t3
+JOIN category c
+ON c.category_id = t3.category_id
+JOIN film f
+ON f.film_id = t3.film_id
+JOIN inventory t4
+ON t4.film_id = f.film_id
+JOIN rental r 
+ON r.inventory_id = t4.inventory_id
+WHERE c.name = 'Music'
+GROUP BY 1,2;
